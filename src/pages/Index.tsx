@@ -1,13 +1,21 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import ProcessSteps from '@/components/ProcessSteps';
 import UploadSection from '@/components/UploadSection';
 import Gallery from '@/components/Gallery';
 import Footer from '@/components/Footer';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Upload } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const [videoSrc, setVideoSrc] = useState("https://images.unsplash.com/video/upload/v1693293311/stock/video-10.mp4");
+  const [videoUploaded, setVideoUploaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
   // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +39,46 @@ const Index = () => {
       });
     };
   }, []);
+
+  const handleVideoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    // Check if the file is a video
+    if (!file.type.startsWith('video/')) {
+      toast({
+        title: "Invalid file type",
+        description: "Please upload a video file.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    // Create a blob URL for the video
+    const objectUrl = URL.createObjectURL(file);
+    setVideoSrc(objectUrl);
+    setVideoUploaded(true);
+    
+    toast({
+      title: "Video uploaded",
+      description: "Your video has been uploaded successfully."
+    });
+    
+    // Reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handlePlayVideo = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -115,7 +163,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Video Showcase Section */}
+      {/* Video Showcase Section with Upload Option */}
       <section className="py-20 px-6 md:px-10 bg-slate-50">
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-12 opacity-0 animate-fade-in">
@@ -123,26 +171,56 @@ const Index = () => {
               See it in action
             </div>
             <h2 className="text-3xl md:text-4xl mb-4">Watch AI Transform Still Images Into Movement</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto mb-6">
               Our AI technology brings your fashion photos to life with realistic, fluid motion that showcases your style.
             </p>
+            
+            {/* Video Upload Button */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="mb-8">
+                  <Upload className="w-4 h-4 mr-2" /> Change Showcase Video
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Upload Showcase Video</DialogTitle>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <p className="text-sm text-muted-foreground">
+                    Upload a video to showcase on the homepage. This will replace the current video.
+                  </p>
+                  <input 
+                    type="file" 
+                    ref={fileInputRef}
+                    accept="video/*" 
+                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" 
+                    onChange={handleVideoUpload}
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video">
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30 z-10 group hover:bg-black/40 transition-colors cursor-pointer">
+                <div 
+                  className="absolute inset-0 flex items-center justify-center bg-black/30 z-10 group hover:bg-black/40 transition-colors cursor-pointer"
+                  onClick={handlePlayVideo}
+                >
                   <div className="w-20 h-20 flex items-center justify-center rounded-full bg-white/90 group-hover:bg-white transition-colors">
                     <Play className="w-8 h-8 text-primary fill-primary ml-1" />
                   </div>
                 </div>
                 <video 
+                  ref={videoRef}
                   className="w-full h-full object-cover" 
-                  poster="/lovable-uploads/7a003c9c-924d-4b7e-b25e-781d46196a6b.png"
+                  poster={videoUploaded ? undefined : "/lovable-uploads/7a003c9c-924d-4b7e-b25e-781d46196a6b.png"}
                   muted
                   loop
                 >
-                  <source src="https://images.unsplash.com/video/upload/v1693293311/stock/video-10.mp4" type="video/mp4" />
+                  <source src={videoSrc} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
