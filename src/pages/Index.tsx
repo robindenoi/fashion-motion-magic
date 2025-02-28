@@ -47,15 +47,15 @@ const Index = () => {
       <section className="py-24 px-6 md:px-10 bg-primary text-primary-foreground fancy-blur-bg">
         <div className="container max-w-6xl mx-auto text-center">
           <div className="opacity-0 animate-fade-in max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl mb-6">Ready to Transform Your Style?</h2>
+            <h2 className="text-3xl md:text-4xl mb-6">Pronto para Transformar Seu Estilo?</h2>
             <p className="text-primary-foreground/70 mb-10">
-              Join thousands of fashion enthusiasts who are already bringing their outfits to life.
+              Junte-se a milhares de entusiastas da moda que já estão dando vida aos seus outfits.
             </p>
             <a 
               href="#upload" 
               className="px-8 py-4 bg-white text-primary rounded-full inline-block hover-lift"
             >
-              Get Started Now
+              Comece Agora
             </a>
           </div>
         </div>

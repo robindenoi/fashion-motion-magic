@@ -6,20 +6,20 @@ const ProcessSteps = () => {
   const steps = [
     {
       icon: <Camera className="w-8 h-8" />,
-      title: "Upload Your Photo",
-      description: "Simply upload a photo of yourself in your favorite outfit. High-quality, well-lit photos work best.",
+      title: "Envie Sua Foto",
+      description: "Simplesmente envie uma foto sua com seu outfit favorito. Fotos de alta qualidade e bem iluminadas funcionam melhor.",
       delay: 1
     },
     {
       icon: <Wand2 className="w-8 h-8" />,
-      title: "AI Processing",
-      description: "Our advanced AI analyzes your outfit, style, and pose to create realistic motion that complements your look.",
+      title: "Processamento de IA",
+      description: "Nossa IA avançada analisa seu outfit, estilo e pose para criar movimentos realistas que complementam seu visual.",
       delay: 2
     },
     {
       icon: <Video className="w-8 h-8" />,
-      title: "Get Your Video",
-      description: "Within seconds, receive a stunning fashion video that brings your outfit to life with professional movements.",
+      title: "Receba Seu Vídeo",
+      description: "Em segundos, receba um vídeo deslumbrante que dá vida ao seu outfit com movimentos profissionais.",
       delay: 3
     }
   ];
@@ -29,11 +29,11 @@ const ProcessSteps = () => {
       <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-16 opacity-0 animate-fade-in">
           <div className="inline-block px-3 py-1 bg-secondary text-xs uppercase tracking-wider rounded-full mb-3">
-            How It Works
+            Como Funciona
           </div>
-          <h2 className="text-3xl md:text-4xl mb-4">Simple 3-Step Process</h2>
+          <h2 className="text-3xl md:text-4xl mb-4">Processo em 3 Passos</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            From static photo to dynamic video in seconds, no technical skills required.
+            De foto estática para vídeo dinâmico em segundos, sem necessidade de conhecimentos técnicos.
           </p>
         </div>
         

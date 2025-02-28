@@ -12,34 +12,34 @@ const Footer = () => {
               <span className="text-xl font-light opacity-60">fashion</span>
             </div>
             <p className="text-sm text-primary-foreground/70 max-w-xs">
-              Transform your static fashion photos into stunning motion videos with our state-of-the-art AI technology.
+              Transforme suas fotos estáticas de moda em vídeos impressionantes com nossa tecnologia de IA de ponta.
             </p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
             <div>
-              <h3 className="font-medium mb-4">Product</h3>
+              <h3 className="font-medium mb-4">Produto</h3>
               <ul className="space-y-2">
-                <li><a href="#how-it-works" className="text-sm opacity-70 hover:opacity-100 transition-opacity">How It Works</a></li>
-                <li><a href="#examples" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Examples</a></li>
-                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Pricing</a></li>
+                <li><a href="#how-it-works" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Como Funciona</a></li>
+                <li><a href="#examples" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Exemplos</a></li>
+                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Preços</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-medium mb-4">Company</h3>
+              <h3 className="font-medium mb-4">Empresa</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">About Us</a></li>
-                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Careers</a></li>
-                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Contact</a></li>
+                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Sobre Nós</a></li>
+                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Carreiras</a></li>
+                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Contato</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-medium mb-4">Legal</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Terms</a></li>
-                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Privacy</a></li>
+                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Termos</a></li>
+                <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Privacidade</a></li>
                 <li><a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">Cookies</a></li>
               </ul>
             </div>
@@ -48,7 +48,7 @@ const Footer = () => {
         
         <div className="mt-16 pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm opacity-70 mb-4 md:mb-0">
-            © {new Date().getFullYear()} Motion Fashion. All rights reserved.
+            © {new Date().getFullYear()} Motion Fashion. Todos os direitos reservados.
           </p>
           
           <div className="flex space-x-6">

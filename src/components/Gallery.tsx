@@ -9,28 +9,28 @@ const Gallery = () => {
       id: 1,
       image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800",
       video: "https://static.videezy.com/system/resources/previews/000/045/482/original/alila-4.mp4",
-      alt: "Woman in casual outfit",
+      alt: "Mulher em outfit casual",
       delay: 1
     },
     {
       id: 2,
       image: "https://images.unsplash.com/photo-1521503862198-2ae9a997bbc9?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800",
       video: "https://static.videezy.com/system/resources/previews/000/050/708/original/50708.mp4",
-      alt: "Man in business attire",
+      alt: "Homem em traje executivo",
       delay: 2
     },
     {
       id: 3,
       image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800",
       video: "https://static.videezy.com/system/resources/previews/000/038/656/original/fashion_model_catwalk.mp4",
-      alt: "Woman in evening dress",
+      alt: "Mulher em vestido de festa",
       delay: 3
     },
     {
       id: 4,
       image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800",
       video: "https://static.videezy.com/system/resources/previews/000/039/501/original/Male_Fashion_01.mp4",
-      alt: "Man in casual style",
+      alt: "Homem em estilo casual",
       delay: 4
     }
   ];
@@ -40,11 +40,11 @@ const Gallery = () => {
       <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-16 opacity-0 animate-fade-in">
           <div className="inline-block px-3 py-1 bg-primary/10 text-xs uppercase tracking-wider rounded-full mb-3">
-            Examples
+            Exemplos
           </div>
-          <h2 className="text-3xl md:text-4xl mb-4">See Fashion in Motion</h2>
+          <h2 className="text-3xl md:text-4xl mb-4">Veja a Moda em Movimento</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Hover over each image to see how our AI transforms static photos into dynamic fashion videos.
+            Passe o mouse sobre cada imagem para ver como nossa IA transforma fotos estáticas em vídeos de moda dinâmicos.
           </p>
         </div>
         

@@ -27,13 +27,13 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-sm animated-underline">How It Works</a>
-            <a href="#examples" className="text-sm animated-underline">Examples</a>
-            <a href="#upload" className="text-sm animated-underline">Try Now</a>
+            <a href="#how-it-works" className="text-sm animated-underline">Como Funciona</a>
+            <a href="#examples" className="text-sm animated-underline">Exemplos</a>
+            <a href="#upload" className="text-sm animated-underline">Experimente</a>
           </nav>
           
           <button className="px-4 py-2 text-sm text-primary-foreground bg-primary rounded-full transition-all duration-300 hover:opacity-90">
-            Get Started
+            Começar
           </button>
         </div>
       </div>
