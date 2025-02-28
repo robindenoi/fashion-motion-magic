@@ -49,13 +49,13 @@ const Index = () => {
           <div className="opacity-0 animate-fade-in max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl mb-6">Pronto para Transformar Seu Estilo?</h2>
             <p className="text-primary-foreground/70 mb-10">
-              Junte-se a milhares de entusiastas da moda que já estão dando vida aos seus outfits.
+              Junte-se a milhares de entusiastas da moda que já estão dando vida aos seus looks.
             </p>
             <a 
               href="#upload" 
               className="px-8 py-4 bg-white text-primary rounded-full inline-block hover-lift"
             >
-              Comece Agora
+              Começar Agora
             </a>
           </div>
         </div>
