@@ -192,8 +192,8 @@ const UploadSection = () => {
             )}
           </div>
           
-          {/* Right Side: Before/After Images */}
-          <div className="lg:w-1/2 flex justify-center items-center gap-4 mt-8 lg:mt-0 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
+          {/* Right Side: Image from user upload */}
+          <div className="lg:w-1/2 flex justify-center items-center mt-8 lg:mt-0 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
             <div className="relative">
               <img 
                 src="/lovable-uploads/09c3c945-d07a-461b-8eba-84690dffdb5b.png" 
