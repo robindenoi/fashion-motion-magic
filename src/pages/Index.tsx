@@ -36,7 +36,10 @@ const Index = () => {
     <div className="min-h-screen overflow-x-hidden">
       <Header />
       
-      {/* Hero Section */}
+      {/* Upload Section - Moved to the beginning for immediate access */}
+      <UploadSection />
+      
+      {/* Hero Section - Now comes after the upload section */}
       <section className="pt-32 pb-20 px-6 md:px-10 fancy-blur-bg">
         <div className="container max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center">
@@ -115,8 +118,6 @@ const Index = () => {
       <ProcessSteps />
       
       <Gallery />
-      
-      <UploadSection />
       
       {/* Testimonials/CTA Section */}
       <section className="py-24 px-6 md:px-10 bg-primary text-primary-foreground fancy-blur-bg">

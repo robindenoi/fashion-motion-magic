@@ -93,11 +93,11 @@ const UploadSection = () => {
   };
   
   return (
-    <section id="upload" className="py-20 px-6 md:px-10">
+    <section id="upload" className="pt-32 pb-10 px-6 md:px-10 fancy-blur-bg">
       <div className="container max-w-5xl mx-auto">
-        <div className="text-center mb-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
+        <div className="text-center mb-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '0' } as React.CSSProperties}>
           <div className="inline-block px-3 py-1 bg-secondary text-xs uppercase tracking-wider rounded-full mb-3">
-            Try it yourself
+            Try it now
           </div>
           <h2 className="text-3xl md:text-4xl mb-4">Transform Your Look Into Motion</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
@@ -105,7 +105,7 @@ const UploadSection = () => {
           </p>
         </div>
         
-        <div className="glass-panel p-8 md:p-12 opacity-0 animate-fade-in" style={{ '--reveal-delay': '2' } as React.CSSProperties}>
+        <div className="glass-panel p-8 md:p-12 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
           {!selectedImage ? (
             <div 
               className={cn(
