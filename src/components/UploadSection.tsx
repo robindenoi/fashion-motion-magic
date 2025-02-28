@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Upload, ArrowRight, Camera } from 'lucide-react';
@@ -92,17 +93,17 @@ const UploadSection = () => {
   };
   
   return (
-    <section id="upload" className="pt-32 pb-10 px-6 md:px-10 fancy-blur-bg">
+    <section id="upload" className="pt-24 md:pt-32 pb-10 px-4 md:px-10 fancy-blur-bg">
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '0' } as React.CSSProperties}>
-          <h2 className="text-3xl md:text-4xl mb-4">Transforme Seu Look Em Movimento</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+        <div className="text-center mb-8 md:mb-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '0' } as React.CSSProperties}>
+          <h2 className="text-2xl md:text-4xl mb-3 md:mb-4">Transforme Seu Look Em Movimento</h2>
+          <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
             Faça upload da foto do seu look e nossa IA criará um vídeo de moda impressionante que dará vida ao seu estilo.
           </p>
         </div>
         
-        <div className="glass-panel p-8 md:p-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
-          <div className="flex flex-col gap-8">
+        <div className="glass-panel p-5 md:p-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
+          <div className="flex flex-col gap-6 md:gap-8">
             {/* Comparison Images - Now at the top */}
             <div className="w-full">
               <div className="flex flex-col md:flex-row gap-4">
@@ -115,10 +116,10 @@ const UploadSection = () => {
                       className="w-full h-auto object-cover"
                     />
                     <div className="absolute top-0 left-0 bg-black/60 text-white text-xs px-2 py-1">
-                      BEFORE
+                      ANTES
                     </div>
                   </div>
-                  <p className="text-xs text-center text-muted-foreground">Original Photo</p>
+                  <p className="text-xs text-center text-muted-foreground">Foto Original</p>
                 </div>
                 
                 {/* After Image */}
@@ -130,30 +131,30 @@ const UploadSection = () => {
                       className="w-full h-auto object-cover"
                     />
                     <div className="absolute top-0 left-0 bg-primary/80 text-white text-xs px-2 py-1">
-                      AFTER
+                      DEPOIS
                     </div>
                     {/* Play button overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center shadow-lg cursor-pointer hover:bg-white transition-colors">
-                        <div className="w-0 h-0 border-y-[8px] border-y-transparent border-l-[12px] border-l-primary ml-1"></div>
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/80 flex items-center justify-center shadow-lg cursor-pointer hover:bg-white transition-colors">
+                        <div className="w-0 h-0 border-y-[6px] md:border-y-[8px] border-y-transparent border-l-[10px] md:border-l-[12px] border-l-primary ml-1"></div>
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-center text-muted-foreground">Generated Video</p>
+                  <p className="text-xs text-center text-muted-foreground">Vídeo Gerado</p>
                 </div>
               </div>
               
               {/* Features list */}
-              <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="mt-4 md:mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
                 {[
-                  "Natural fabric motion",
-                  "Realistic movement",
-                  "Enhanced lighting",
-                  "Professional effects"
+                  "Movimento natural dos tecidos",
+                  "Movimentos realistas",
+                  "Iluminação aprimorada",
+                  "Efeitos profissionais"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="mr-2 mt-0.5 w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                    <div className="mr-1 md:mr-2 mt-0.5 w-3 h-3 md:w-4 md:h-4 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
                     <p className="text-xs">{feature}</p>
                   </div>
@@ -162,12 +163,12 @@ const UploadSection = () => {
             </div>
 
             {/* Upload Section - Now at the bottom */}
-            <div className="w-full mt-6">
-              <div className="border border-dashed border-gray-300 rounded-lg p-6">
+            <div className="w-full mt-4 md:mt-6">
+              <div className="border border-dashed border-gray-300 rounded-lg p-4 md:p-6">
                 {!selectedImage ? (
                   <div 
                     className={cn(
-                      "upload-zone flex flex-col items-center justify-center p-6",
+                      "upload-zone flex flex-col items-center justify-center p-4 md:p-6",
                       dragActive && "upload-zone-active"
                     )}
                     onDragEnter={handleDrag}
@@ -183,19 +184,19 @@ const UploadSection = () => {
                       onChange={handleFileChange}
                     />
                     
-                    <Upload className="w-8 h-8 mb-3 text-muted-foreground" />
-                    <p className="text-center mb-2 text-sm">Arraste e solte a foto do seu look aqui</p>
-                    <p className="text-xs text-muted-foreground mb-3">ou</p>
+                    <Upload className="w-6 h-6 md:w-8 md:h-8 mb-2 md:mb-3 text-muted-foreground" />
+                    <p className="text-center mb-1 md:mb-2 text-xs md:text-sm">Arraste e solte a foto do seu look aqui</p>
+                    <p className="text-xs text-muted-foreground mb-2 md:mb-3">ou</p>
                     <button 
-                      className="px-4 py-2 bg-primary text-primary-foreground rounded-full hover-lift text-sm"
+                      className="px-3 py-1.5 md:px-4 md:py-2 bg-primary text-primary-foreground rounded-full hover-lift text-xs md:text-sm"
                       onClick={handleUploadClick}
                     >
                       Selecionar Imagem
                     </button>
                   </div>
                 ) : (
-                  <div className="flex flex-col md:flex-row gap-6 items-center">
-                    <div className="md:w-1/3">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center">
+                    <div className="w-full md:w-1/3">
                       <div className="relative">
                         <img 
                           src={selectedImage} 
@@ -210,24 +211,24 @@ const UploadSection = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="md:w-2/3">
-                      <h3 className="text-lg font-medium mb-2">Pronto para transformar seu look?</h3>
-                      <p className="text-sm text-muted-foreground mb-4">
+                    <div className="w-full md:w-2/3 mt-3 md:mt-0">
+                      <h3 className="text-base md:text-lg font-medium mb-1 md:mb-2">Pronto para transformar seu look?</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
                         Nossa IA criará um vídeo de moda impressionante com seu look com movimento realista.
                       </p>
                       <button 
-                        className="w-full sm:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-full hover-lift flex items-center justify-center"
+                        className="w-full px-4 py-2 md:px-6 md:py-3 bg-primary text-primary-foreground rounded-full hover-lift flex items-center justify-center text-sm"
                         onClick={handleGenerateVideo}
                         disabled={loading}
                       >
                         {loading ? (
                           <span className="flex items-center">
-                            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                            <span className="w-3 h-3 md:w-4 md:h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-1 md:mr-2" />
                             Processando...
                           </span>
                         ) : (
                           <span className="flex items-center">
-                            Gerar Vídeo <ArrowRight className="ml-2 w-4 h-4" />
+                            Gerar Vídeo <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4" />
                           </span>
                         )}
                       </button>
