@@ -103,75 +103,9 @@ const UploadSection = () => {
         </div>
         
         <div className="glass-panel p-8 md:p-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
-          <div className="flex flex-col lg:flex-row gap-8 items-center">
-            {/* Upload Section - Left Side */}
-            <div className="lg:w-2/5">
-              {!selectedImage ? (
-                <div 
-                  className={cn(
-                    "upload-zone flex flex-col items-center justify-center p-6 h-56",
-                    dragActive && "upload-zone-active"
-                  )}
-                  onDragEnter={handleDrag}
-                  onDragLeave={handleDrag}
-                  onDragOver={handleDrag}
-                  onDrop={handleDrop}
-                >
-                  <input 
-                    ref={fileInputRef}
-                    type="file" 
-                    className="hidden" 
-                    accept="image/*"
-                    onChange={handleFileChange}
-                  />
-                  
-                  <Upload className="w-8 h-8 mb-3 text-muted-foreground" />
-                  <p className="text-center mb-2 text-sm">Drag and drop your outfit photo here</p>
-                  <p className="text-xs text-muted-foreground mb-3">or</p>
-                  <button 
-                    className="px-4 py-2 bg-primary text-primary-foreground rounded-full hover-lift text-sm"
-                    onClick={handleUploadClick}
-                  >
-                    Select Image
-                  </button>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  <div className="relative">
-                    <img 
-                      src={selectedImage} 
-                      alt="Uploaded outfit" 
-                      className="w-full h-auto rounded-lg object-cover border shadow-sm"
-                    />
-                    <button 
-                      onClick={() => setSelectedImage(null)}
-                      className="absolute top-2 right-2 bg-black/50 text-white p-1 rounded-full text-xs hover:bg-black/70"
-                    >
-                      Change
-                    </button>
-                  </div>
-                  <button 
-                    className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-full hover-lift flex items-center justify-center"
-                    onClick={handleGenerateVideo}
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <span className="flex items-center">
-                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                        Processing...
-                      </span>
-                    ) : (
-                      <span className="flex items-center">
-                        Generate Video <ArrowRight className="ml-2 w-4 h-4" />
-                      </span>
-                    )}
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Comparison Images - Right Side */}
-            <div className="lg:w-3/5">
+          <div className="flex flex-col gap-8">
+            {/* Comparison Images - Now at the top */}
+            <div className="w-full">
               <div className="flex flex-col md:flex-row gap-4">
                 {/* Before Image */}
                 <div className="flex-1 space-y-2">
@@ -211,7 +145,7 @@ const UploadSection = () => {
               </div>
               
               {/* Features list */}
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
                   "Natural fabric motion",
                   "Realistic movement",
@@ -225,6 +159,82 @@ const UploadSection = () => {
                     <p className="text-xs">{feature}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Upload Section - Now at the bottom */}
+            <div className="w-full mt-6">
+              <div className="border border-dashed border-gray-300 rounded-lg p-6">
+                {!selectedImage ? (
+                  <div 
+                    className={cn(
+                      "upload-zone flex flex-col items-center justify-center p-6",
+                      dragActive && "upload-zone-active"
+                    )}
+                    onDragEnter={handleDrag}
+                    onDragLeave={handleDrag}
+                    onDragOver={handleDrag}
+                    onDrop={handleDrop}
+                  >
+                    <input 
+                      ref={fileInputRef}
+                      type="file" 
+                      className="hidden" 
+                      accept="image/*"
+                      onChange={handleFileChange}
+                    />
+                    
+                    <Upload className="w-8 h-8 mb-3 text-muted-foreground" />
+                    <p className="text-center mb-2 text-sm">Drag and drop your outfit photo here</p>
+                    <p className="text-xs text-muted-foreground mb-3">or</p>
+                    <button 
+                      className="px-4 py-2 bg-primary text-primary-foreground rounded-full hover-lift text-sm"
+                      onClick={handleUploadClick}
+                    >
+                      Select Image
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col md:flex-row gap-6 items-center">
+                    <div className="md:w-1/3">
+                      <div className="relative">
+                        <img 
+                          src={selectedImage} 
+                          alt="Uploaded outfit" 
+                          className="w-full h-auto rounded-lg object-cover border shadow-sm"
+                        />
+                        <button 
+                          onClick={() => setSelectedImage(null)}
+                          className="absolute top-2 right-2 bg-black/50 text-white p-1 rounded-full text-xs hover:bg-black/70"
+                        >
+                          Change
+                        </button>
+                      </div>
+                    </div>
+                    <div className="md:w-2/3">
+                      <h3 className="text-lg font-medium mb-2">Ready to transform your look?</h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Our AI will create a stunning fashion video featuring your outfit with realistic movement.
+                      </p>
+                      <button 
+                        className="w-full sm:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-full hover-lift flex items-center justify-center"
+                        onClick={handleGenerateVideo}
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <span className="flex items-center">
+                            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                            Processing...
+                          </span>
+                        ) : (
+                          <span className="flex items-center">
+                            Generate Video <ArrowRight className="ml-2 w-4 h-4" />
+                          </span>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
