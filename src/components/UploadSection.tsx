@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Upload, ArrowRight, Camera } from 'lucide-react';
@@ -96,9 +95,9 @@ const UploadSection = () => {
     <section id="upload" className="pt-32 pb-10 px-6 md:px-10 fancy-blur-bg">
       <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-10 opacity-0 animate-fade-in" style={{ '--reveal-delay': '0' } as React.CSSProperties}>
-          <h2 className="text-3xl md:text-4xl mb-4">Transform Your Look Into Motion</h2>
+          <h2 className="text-3xl md:text-4xl mb-4">Transforme Seu Look Em Movimento</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Upload your outfit photo and our AI will create a stunning fashion video that brings your style to life.
+            Faça upload da foto do seu look e nossa IA criará um vídeo de moda impressionante que dará vida ao seu estilo.
           </p>
         </div>
         
@@ -185,13 +184,13 @@ const UploadSection = () => {
                     />
                     
                     <Upload className="w-8 h-8 mb-3 text-muted-foreground" />
-                    <p className="text-center mb-2 text-sm">Drag and drop your outfit photo here</p>
-                    <p className="text-xs text-muted-foreground mb-3">or</p>
+                    <p className="text-center mb-2 text-sm">Arraste e solte a foto do seu look aqui</p>
+                    <p className="text-xs text-muted-foreground mb-3">ou</p>
                     <button 
                       className="px-4 py-2 bg-primary text-primary-foreground rounded-full hover-lift text-sm"
                       onClick={handleUploadClick}
                     >
-                      Select Image
+                      Selecionar Imagem
                     </button>
                   </div>
                 ) : (
@@ -207,14 +206,14 @@ const UploadSection = () => {
                           onClick={() => setSelectedImage(null)}
                           className="absolute top-2 right-2 bg-black/50 text-white p-1 rounded-full text-xs hover:bg-black/70"
                         >
-                          Change
+                          Mudar
                         </button>
                       </div>
                     </div>
                     <div className="md:w-2/3">
-                      <h3 className="text-lg font-medium mb-2">Ready to transform your look?</h3>
+                      <h3 className="text-lg font-medium mb-2">Pronto para transformar seu look?</h3>
                       <p className="text-sm text-muted-foreground mb-4">
-                        Our AI will create a stunning fashion video featuring your outfit with realistic movement.
+                        Nossa IA criará um vídeo de moda impressionante com seu look com movimento realista.
                       </p>
                       <button 
                         className="w-full sm:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-full hover-lift flex items-center justify-center"
@@ -224,11 +223,11 @@ const UploadSection = () => {
                         {loading ? (
                           <span className="flex items-center">
                             <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                            Processing...
+                            Processando...
                           </span>
                         ) : (
                           <span className="flex items-center">
-                            Generate Video <ArrowRight className="ml-2 w-4 h-4" />
+                            Gerar Vídeo <ArrowRight className="ml-2 w-4 h-4" />
                           </span>
                         )}
                       </button>
