@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Upload, ArrowRight, Camera } from 'lucide-react';
-import { toast } from "@/components/ui/sonner";
+import { toast } from "@/hooks/use-toast";
 
 const UploadSection = () => {
   const [dragActive, setDragActive] = useState(false);
@@ -40,13 +40,21 @@ const UploadSection = () => {
   const handleFile = (file: File) => {
     // Check if file is an image
     if (!file.type.match('image.*')) {
-      toast.error("Please select an image file");
+      toast({
+        title: "Error",
+        description: "Please select an image file",
+        variant: "destructive"
+      });
       return;
     }
     
     // Check file size (max 10MB)
     if (file.size > 10 * 1024 * 1024) {
-      toast.error("File is too large (max 10MB)");
+      toast({
+        title: "Error",
+        description: "File is too large (max 10MB)",
+        variant: "destructive"
+      });
       return;
     }
     
@@ -72,7 +80,10 @@ const UploadSection = () => {
     setLoading(true);
     // Simulate video generation
     setTimeout(() => {
-      toast.success("Your fashion video has been generated!");
+      toast({
+        title: "Success",
+        description: "Your fashion video has been generated!",
+      });
       setLoading(false);
       // Reset for demo purposes
       setTimeout(() => {
