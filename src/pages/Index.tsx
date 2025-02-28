@@ -5,7 +5,7 @@ import ProcessSteps from '@/components/ProcessSteps';
 import UploadSection from '@/components/UploadSection';
 import Gallery from '@/components/Gallery';
 import Footer from '@/components/Footer';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 
 const Index = () => {
   // Intersection Observer for scroll animations
@@ -75,8 +75,8 @@ const Index = () => {
               <div className="relative">
                 <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-purple-200/20 to-cyan-200/20 rounded-full blur-3xl"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1603217192634-61068e4d4bf9?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200" 
-                  alt="Fashion motion transformation" 
+                  src="/lovable-uploads/7a003c9c-924d-4b7e-b25e-781d46196a6b.png" 
+                  alt="Fashion model in stylish outfit" 
                   className="w-full rounded-2xl shadow-2xl"
                 />
                 <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-lg opacity-0 animate-fade-in" style={{ '--reveal-delay': '2' } as React.CSSProperties}>
@@ -111,6 +111,74 @@ const Index = () => {
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Video Showcase Section */}
+      <section className="py-20 px-6 md:px-10 bg-slate-50">
+        <div className="container max-w-6xl mx-auto">
+          <div className="text-center mb-12 opacity-0 animate-fade-in">
+            <div className="inline-block px-3 py-1 bg-secondary text-xs uppercase tracking-wider rounded-full mb-3">
+              See it in action
+            </div>
+            <h2 className="text-3xl md:text-4xl mb-4">Watch AI Transform Still Images Into Movement</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Our AI technology brings your fashion photos to life with realistic, fluid motion that showcases your style.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="opacity-0 animate-fade-in" style={{ '--reveal-delay': '1' } as React.CSSProperties}>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 z-10 group hover:bg-black/40 transition-colors cursor-pointer">
+                  <div className="w-20 h-20 flex items-center justify-center rounded-full bg-white/90 group-hover:bg-white transition-colors">
+                    <Play className="w-8 h-8 text-primary fill-primary ml-1" />
+                  </div>
+                </div>
+                <video 
+                  className="w-full h-full object-cover" 
+                  poster="/lovable-uploads/7a003c9c-924d-4b7e-b25e-781d46196a6b.png"
+                  muted
+                  loop
+                >
+                  <source src="https://images.unsplash.com/video/upload/v1693293311/stock/video-10.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            
+            <div className="opacity-0 animate-fade-in" style={{ '--reveal-delay': '2' } as React.CSSProperties}>
+              <h3 className="text-2xl font-medium mb-4">Stunning Transformations</h3>
+              <p className="text-muted-foreground mb-6">
+                Our AI doesn't just animate your photo - it creates a realistic interpretation of how your outfit would move in real life, with natural fabric motion and professional fashion video aesthetics.
+              </p>
+              
+              <ul className="space-y-4">
+                {[
+                  "Natural fabric motion that responds to movement",
+                  "Professional lighting enhancements",
+                  "Subtle background animations",
+                  "Model pose variations that showcase the outfit"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                    <div className="mr-3 mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="mt-8">
+                <a 
+                  href="#upload" 
+                  className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover-lift inline-flex items-center"
+                >
+                  Create Your Video <ArrowRight className="ml-2 w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
