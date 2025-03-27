@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,12 +29,15 @@ const Header = () => {
       <div className="container max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-1">
-            <span className="font-medium text-lg md:text-xl">motion</span>
-            <span className="text-lg md:text-xl font-light opacity-60">fashion</span>
+            <Link to="/" className="flex items-center">
+              <span className="font-medium text-lg md:text-xl">motion</span>
+              <span className="text-lg md:text-xl font-light opacity-60">fashion</span>
+            </Link>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/planos" className="text-sm animated-underline">Planos</Link>
             <a href="#how-it-works" className="text-sm animated-underline">Como Funciona</a>
             <a href="#examples" className="text-sm animated-underline">Exemplos</a>
             <a href="#upload" className="text-sm animated-underline">Experimente</a>
@@ -59,6 +63,13 @@ const Header = () => {
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm shadow-md py-4 px-6 flex flex-col space-y-4 border-t">
+          <Link 
+            to="/planos" 
+            className="text-sm py-2" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Planos
+          </Link>
           <a 
             href="#how-it-works" 
             className="text-sm py-2" 
