@@ -8,11 +8,10 @@ import type { PricingPlan } from '@/components/PricingCard';
 
 const PRICING_PLANS: PricingPlan[] = [
   {
-    name: "Versace Mensal",
+    name: "Starter",
     credits: "100 créditos / mês",
-    price: "R$40,00 / mês",
+    price: "US$8 / mês",
     features: [
-      "Adicionar membros à equipe",
       "Acesso à IA de última geração",
       "Acesso ao estilista de moda IA",
       "Treinar IA para estilos e humanos",
@@ -25,26 +24,9 @@ const PRICING_PLANS: PricingPlan[] = [
     cancelText: "Cancele a qualquer momento"
   },
   {
-    name: "Dior Mensal",
-    credits: "200 créditos / mês",
-    price: "R$75,00 / mês",
-    features: [
-      "Adicionar membros à equipe",
-      "Acesso à IA de última geração",
-      "Acesso ao estilista de moda IA",
-      "Treinar IA para estilos e humanos",
-      "Criar designs de frente e costas",
-      "Aprimorar designs em HD",
-      "E muito mais..."
-    ],
-    popular: false,
-    buttonText: "Comece Agora",
-    cancelText: "Cancele a qualquer momento"
-  },
-  {
-    name: "Chanel Mensal",
+    name: "Pro",
     credits: "500 créditos / mês",
-    price: "R$175,00 / mês",
+    price: "US$35 / mês",
     features: [
       "Adicionar membros à equipe",
       "Acesso à IA de última geração",
@@ -59,28 +41,12 @@ const PRICING_PLANS: PricingPlan[] = [
     cancelText: "Cancele a qualquer momento"
   },
   {
-    name: "Black Mensal",
+    name: "Premium",
     credits: "1000 créditos / mês",
-    price: "R$325,00 / mês",
+    price: "US$65 / mês",
     features: [
       "Adicionar membros à equipe",
-      "Acesso à IA de última geração",
-      "Acesso ao estilista de moda IA",
-      "Treinar IA para estilos e humanos",
-      "Criar designs de frente e costas",
-      "Aprimorar designs em HD",
-      "E muito mais..."
-    ],
-    popular: false,
-    buttonText: "Comece Agora",
-    cancelText: "Cancele a qualquer momento"
-  },
-  {
-    name: "XL Mensal",
-    credits: "5000 créditos / mês",
-    price: "R$1500,00 / mês",
-    features: [
-      "Adicionar membros à equipe",
+      "Acesso prioritário",
       "Acesso à IA de última geração",
       "Acesso ao estilista de moda IA",
       "Treinar IA para estilos e humanos",
@@ -114,9 +80,11 @@ const Planos = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="flex flex-col lg:flex-row gap-6 justify-center">
             {PRICING_PLANS.map((plan, i) => (
-              <PricingCard key={i} plan={plan} />
+              <div key={i} className="lg:w-1/3">
+                <PricingCard plan={plan} />
+              </div>
             ))}
           </div>
           
