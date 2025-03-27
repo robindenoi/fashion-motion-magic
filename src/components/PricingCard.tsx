@@ -36,7 +36,7 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
       </ul>
       
       <div className="mt-auto">
-        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-full mb-2 transition-colors font-medium">
+        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-full mb-2 transition-colors font-medium border-2 border-green-500 shadow-sm">
           {plan.buttonText}
         </button>
         
