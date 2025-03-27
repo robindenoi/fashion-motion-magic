@@ -14,17 +14,17 @@ export interface PricingPlan {
 
 const PricingCard = ({ plan }: { plan: PricingPlan }) => {
   return (
-    <div className="glass-card rounded-3xl p-6 flex flex-col h-full border-2 border-amber-400/70 overflow-hidden relative hover-lift">
+    <div className="glass-card rounded-3xl p-6 flex flex-col h-full border border-white/20 overflow-hidden relative hover-lift">
       {plan.popular && (
         <div className="absolute top-4 right-4">
-          <span className="bg-red-500 text-white text-xs font-medium px-3 py-1 rounded-full flex items-center">
+          <span className="bg-primary text-white text-xs font-medium px-3 py-1 rounded-full flex items-center">
             <Check size={12} className="mr-1" /> MAIS POPULAR
           </span>
         </div>
       )}
       
       <h3 className="text-xl font-medium mb-1">{plan.name}</h3>
-      <p className="text-amber-600 font-medium mb-6">{plan.credits}</p>
+      <p className="text-primary/90 font-medium mb-6">{plan.credits}</p>
       
       <ul className="space-y-2 text-left text-sm mb-6 flex-grow">
         {plan.features.map((feature, i) => (
@@ -36,12 +36,12 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
       </ul>
       
       <div className="mt-auto">
-        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-full mb-2 transition-colors font-medium">
+        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-full mb-2 transition-colors font-medium">
           {plan.buttonText}
         </button>
         
         <p className="text-lg font-semibold mb-1">{plan.price}</p>
-        <p className="text-xs text-gray-500">{plan.cancelText}</p>
+        <p className="text-xs text-muted-foreground">{plan.cancelText}</p>
       </div>
     </div>
   );
