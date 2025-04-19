@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import CreditCounter from './CreditCounter';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -54,9 +55,12 @@ const Header = () => {
             </button>
           </div>
           
-          <button className="hidden md:block px-4 py-2 text-sm text-primary-foreground bg-primary rounded-full transition-all duration-300 hover:opacity-90">
-            Começar
-          </button>
+          <div className="hidden md:flex items-center gap-4">
+            <CreditCounter />
+            <button className="px-4 py-2 text-sm text-primary-foreground bg-primary rounded-full transition-all duration-300 hover:opacity-90">
+              Começar
+            </button>
+          </div>
         </div>
       </div>
       
@@ -91,9 +95,12 @@ const Header = () => {
           >
             Experimente
           </a>
-          <button className="w-full px-4 py-2 text-sm text-primary-foreground bg-primary rounded-full transition-all duration-300 hover:opacity-90 mt-2">
-            Começar
-          </button>
+          <div className="flex items-center gap-4 pt-2">
+            <CreditCounter />
+            <button className="w-full px-4 py-2 text-sm text-primary-foreground bg-primary rounded-full transition-all duration-300 hover:opacity-90">
+              Começar
+            </button>
+          </div>
         </div>
       )}
     </header>
