@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import { Image, Folder, Plus } from 'lucide-react';
-import { Sneakers, Heels, Boots } from 'lucide-react';
+import { Bot, ShirtIcon, BookOpen } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -10,7 +10,8 @@ const VirtualTryOn = () => {
   const [activeCategory, setActiveCategory] = useState('clothes');
   const [activeTab, setActiveTab] = useState('try-on');
   const [selectedShoeType, setSelectedShoeType] = useState('sneakers');
-  
+  const [selectedGarmentType, setSelectedGarmentType] = useState('top');
+
   const categories = [
     { id: 'clothes', label: 'Clothes', disabled: false },
     { id: 'shoes', label: 'Shoes', disabled: false },
@@ -32,9 +33,9 @@ const VirtualTryOn = () => {
   ];
 
   const shoeTypes = [
-    { id: 'sneakers', label: 'Sneakers', icon: Sneakers },
-    { id: 'heels', label: 'Heels', icon: Heels },
-    { id: 'boots', label: 'Boots', icon: Boots },
+    { id: 'sneakers', label: 'Sneakers', icon: ShirtIcon },
+    { id: 'heels', label: 'Heels', icon: BookOpen },
+    { id: 'boots', label: 'Boots', icon: Bot },
   ];
 
   return (
@@ -188,7 +189,7 @@ const VirtualTryOn = () => {
                     
                     <div className="flex items-center justify-center">
                       <Button variant="outline" size="sm" className="flex items-center gap-2 border-black/20">
-                        <CirclePlay size={16} />
+                        <Bot size={16} />
                         <span>Tutorials</span>
                       </Button>
                     </div>
