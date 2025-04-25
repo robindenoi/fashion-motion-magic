@@ -32,10 +32,7 @@ const VirtualTryOn = () => {
   ];
 
   const shoeTypes = [
-    { 
-      id: 'sneakers', 
-      label: 'Sneakers'
-    },
+    { id: 'sneakers', label: 'Sneakers' },
     { id: 'heels', label: 'Heels' },
     { id: 'boots', label: 'Boots' },
   ];
