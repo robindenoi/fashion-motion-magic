@@ -32,9 +32,9 @@ const VirtualTryOn = () => {
   ];
 
   const shoeTypes = [
-    { id: 'sneakers', label: 'Sneakers' },
-    { id: 'heels', label: 'Heels' },
-    { id: 'boots', label: 'Boots' },
+    { id: 'sneakers', label: 'Sneakers', disabled: false },
+    { id: 'heels', label: 'Heels', disabled: false },
+    { id: 'boots', label: 'Boots', disabled: false },
   ];
 
   const jewelryTypes = [
@@ -171,16 +171,17 @@ const VirtualTryOn = () => {
                   </>
                 ) : activeCategory === 'shoes' ? (
                   <>
-                    <div className="grid grid-cols-3 gap-3 mb-6">
+                    <div className="grid grid-cols-2 gap-3 mb-6">
                       {shoeTypes.map((type) => (
                         <button
                           key={type.id}
-                          onClick={() => setSelectedShoeType(type.id)}
-                          className={`py-4 px-3 rounded-lg transition-all duration-300 ${
+                          disabled={type.disabled}
+                          onClick={() => !type.disabled && setSelectedShoeType(type.id)}
+                          className={`flex flex-col items-center justify-center py-4 rounded-lg transition-all duration-300 ${
                             selectedShoeType === type.id 
                               ? 'bg-primary text-white shadow-lg scale-105' 
                               : 'bg-white/90 text-gray-800 hover:bg-primary hover:text-white'
-                          }`}
+                          } ${type.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md'}`}
                         >
                           <span className="text-sm">{type.label}</span>
                         </button>
@@ -192,7 +193,7 @@ const VirtualTryOn = () => {
                         <div className="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center mb-3 shadow-sm">
                           <Image size={24} className="text-gray-400" />
                         </div>
-                        <span className="text-sm font-medium text-gray-700">Select shoes</span>
+                        <span className="text-sm font-medium text-gray-700">Select {selectedShoeType}</span>
                       </div>
                       <div className="text-xs text-gray-500 mt-3 text-center italic">
                         Use good resolution images for best results
