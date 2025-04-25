@@ -34,17 +34,10 @@ const VirtualTryOn = () => {
   const shoeTypes = [
     { 
       id: 'sneakers', 
-      label: 'Sneakers', 
-      icon: () => (
-        <img 
-          src="/public/lovable-uploads/e9f02024-598d-48a8-87c8-4d7db1cf4a63.png" 
-          alt="Sneakers" 
-          className="w-6 h-6 object-contain" 
-        />
-      ) 
+      label: 'Sneakers'
     },
-    { id: 'heels', label: 'Heels', icon: Bot },
-    { id: 'boots', label: 'Boots', icon: Bot },
+    { id: 'heels', label: 'Heels' },
+    { id: 'boots', label: 'Boots' },
   ];
 
   const jewelryTypes = [
@@ -188,7 +181,6 @@ const VirtualTryOn = () => {
                             selectedShoeType === type.id ? 'bg-primary text-white' : 'bg-white text-gray-800'
                           }`}
                         >
-                          <type.icon className="mb-1" size={20} />
                           <span className="text-xs">{type.label}</span>
                         </button>
                       ))}
