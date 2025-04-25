@@ -1,0 +1,206 @@
+
+import React, { useState } from 'react';
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from '@/components/ui/button';
+import { Image, Folder, Plus, CirclePlay } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const VirtualTryOn = () => {
+  const [activeCategory, setActiveCategory] = useState('clothes');
+  const [activeTab, setActiveTab] = useState('try-on');
+  
+  const categories = [
+    { id: 'clothes', label: 'Clothes', disabled: false },
+    { id: 'shoes', label: 'Shoes', disabled: false },
+    { id: 'jewelry', label: 'Jewelry', disabled: false },
+    { id: 'head', label: 'Head (soon)', disabled: true },
+    { id: 'bag', label: 'Bag (soon)', disabled: true },
+  ];
+
+  const tabs = [
+    { id: 'try-on', label: 'AI Virtual Try On' },
+    { id: 'model-uploads', label: 'Model uploads' },
+    { id: 'item-uploads', label: 'Item uploads' },
+  ];
+
+  const garmentTypes = [
+    { id: 'top', label: 'Top', icon: '👚' },
+    { id: 'bottom', label: 'Bottom', icon: '👖' },
+    { id: 'one-piece', label: 'One-piece', icon: '👗' },
+  ];
+
+  const [selectedGarmentType, setSelectedGarmentType] = useState('top');
+
+  return (
+    <>
+      <Header />
+      <main className="pt-20 min-h-screen bg-background">
+        <div className="container max-w-7xl mx-auto px-4 py-8">
+          
+          {/* Tabs navigation */}
+          <div className="flex justify-center mb-6">
+            <Tabs value={activeTab} className="w-full max-w-md">
+              <TabsList className="grid grid-cols-3 w-full">
+                {tabs.map((tab) => (
+                  <TabsTrigger 
+                    key={tab.id} 
+                    value={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={activeTab === tab.id ? "bg-primary text-primary-foreground" : ""}
+                  >
+                    {tab.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="bg-gray-100 rounded-xl p-4 mb-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <Folder className="text-green-500" size={20} />
+                  <span className="font-medium">Collection : AI Virtual Try On (All)</span>
+                </div>
+              </div>
+              
+              <div className="bg-gray-100 rounded-xl p-4 mb-4 border-l-4 border-green-500">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                    <span className="text-white text-xs">⚡</span>
+                  </div>
+                  <span className="font-medium">Mode : AI Virtual try on clothes</span>
+                </div>
+                
+                {/* Category buttons */}
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  {categories.map((category) => (
+                    <button
+                      key={category.id}
+                      className={`py-2 px-4 text-center rounded-full text-sm transition-colors ${
+                        activeCategory === category.id
+                          ? 'bg-green-500 text-white'
+                          : 'bg-white text-gray-800'
+                      } ${category.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-500 hover:text-white'}`}
+                      onClick={() => !category.disabled && setActiveCategory(category.id)}
+                      disabled={category.disabled}
+                    >
+                      {category.label}
+                    </button>
+                  ))}
+                </div>
+                
+                <div className="text-xs text-gray-500 mt-4">
+                  Note : To create an AI model wearing your items, go to the <span className="text-green-500">Models</span> section
+                </div>
+              </div>
+              
+              <div className="bg-gray-100 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                      <Plus className="text-white" size={16} />
+                    </div>
+                    <span className="font-medium">Add a model and clothes to try on</span>
+                  </div>
+                  <button className="text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                </div>
+                
+                {/* Model selection */}
+                <div className="bg-white rounded-lg p-4 mb-4">
+                  <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
+                    <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
+                      <Image size={24} className="text-gray-400" />
+                    </div>
+                    <span className="text-sm font-medium">Select human model</span>
+                  </div>
+                  <div className="text-xs text-gray-500 mt-2 text-center">
+                    Use good resolution images for best results
+                  </div>
+                </div>
+                
+                {/* Clothes source */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm">New clothes from :</span>
+                  <div className="relative inline-block">
+                    <select className="appearance-none bg-white border border-gray-200 rounded-full px-4 py-1 pr-8 text-sm">
+                      <option>Photo</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Garment type selection */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {garmentTypes.map((type) => (
+                    <button
+                      key={type.id}
+                      onClick={() => setSelectedGarmentType(type.id)}
+                      className={`flex flex-col items-center justify-center py-4 rounded-lg ${
+                        selectedGarmentType === type.id ? 'bg-green-500 text-white' : 'bg-white text-gray-800'
+                      }`}
+                    >
+                      <span className="text-xl">{type.icon}</span>
+                      <span className="text-xs mt-1">{type.label}</span>
+                    </button>
+                  ))}
+                </div>
+                
+                {/* Item selection */}
+                <div className="bg-white rounded-lg p-4 mb-4">
+                  <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
+                    <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
+                      <Image size={24} className="text-gray-400" />
+                    </div>
+                    <span className="text-sm font-medium">Select {selectedGarmentType}</span>
+                  </div>
+                  <div className="text-xs text-gray-500 mt-2 text-center">
+                    Use good resolution images for best results
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-center">
+                  <Button variant="outline" size="sm" className="flex items-center gap-2 border-black/20">
+                    <CirclePlay size={16} />
+                    <span>Tutorials</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Main content */}
+            <div className="lg:col-span-3">
+              <div className="flex flex-col items-start">
+                <h2 className="text-2xl font-light text-green-500 mb-2">Watch this 1 min video</h2>
+                <p className="text-gray-600 mb-6">See how to use AI virtual try-on</p>
+                
+                {/* Video embed */}
+                <div className="w-full bg-gray-100 rounded-lg overflow-hidden aspect-video relative">
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="Your first AI Virtual Try-On in 1 minute" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+};
+
+export default VirtualTryOn;

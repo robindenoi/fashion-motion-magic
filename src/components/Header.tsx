@@ -39,6 +39,7 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/planos" className="text-sm animated-underline">Planos</Link>
+            <Link to="/virtual-try-on" className="text-sm animated-underline">Virtual Try-On</Link>
             <a href="#how-it-works" className="text-sm animated-underline">Como Funciona</a>
             <a href="#examples" className="text-sm animated-underline">Exemplos</a>
             <a href="#upload" className="text-sm animated-underline">Experimente</a>
@@ -73,6 +74,13 @@ const Header = () => {
             onClick={() => setMobileMenuOpen(false)}
           >
             Planos
+          </Link>
+          <Link 
+            to="/virtual-try-on" 
+            className="text-sm py-2" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Virtual Try-On
           </Link>
           <a 
             href="#how-it-works" 
