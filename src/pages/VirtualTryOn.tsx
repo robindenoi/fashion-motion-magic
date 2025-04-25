@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
@@ -46,6 +45,13 @@ const VirtualTryOn = () => {
     },
     { id: 'heels', label: 'Heels', icon: Bot },
     { id: 'boots', label: 'Boots', icon: Bot },
+  ];
+
+  const jewelryTypes = [
+    { id: 'ring', label: 'Ring (soon)', disabled: true },
+    { id: 'bracelet', label: 'Bracelet', disabled: false },
+    { id: 'earrings', label: 'Earrings', disabled: false },
+    { id: 'sunglasses', label: 'Sunglasses', disabled: false },
   ];
 
   return (
@@ -96,7 +102,9 @@ const VirtualTryOn = () => {
                       key={category.id}
                       className={`py-2 px-4 text-center rounded-full text-sm transition-colors ${
                         activeCategory === category.id
-                          ? 'bg-primary text-white'
+                          ? category.id === 'jewelry' 
+                            ? 'bg-[#F2FCE2] text-gray-800'
+                            : 'bg-primary text-white'
                           : 'bg-white text-gray-800'
                       } ${category.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white'}`}
                       onClick={() => !category.disabled && setActiveCategory(category.id)}
@@ -119,7 +127,7 @@ const VirtualTryOn = () => {
                       <Plus className="text-white" size={16} />
                     </div>
                     <span className="font-medium">
-                      Add a model and {activeCategory === 'shoes' ? 'shoes' : 'clothes'} to try on
+                      Add a model and {activeCategory} to try on
                     </span>
                   </div>
                   <button className="text-gray-400">
@@ -132,14 +140,46 @@ const VirtualTryOn = () => {
                     <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
                       <Image size={24} className="text-gray-400" />
                     </div>
-                    <span className="text-sm font-medium">Select human model</span>
+                    {activeCategory === 'jewelry' ? (
+                      <span className="text-sm font-medium">With eyes visible</span>
+                    ) : (
+                      <span className="text-sm font-medium">Select human model</span>
+                    )}
                   </div>
                   <div className="text-xs text-gray-500 mt-2 text-center">
                     Use good resolution images for best results
                   </div>
                 </div>
-                
-                {activeCategory === 'shoes' ? (
+
+                {activeCategory === 'jewelry' ? (
+                  <>
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      {jewelryTypes.map((type) => (
+                        <button
+                          key={type.id}
+                          disabled={type.disabled}
+                          className={`flex flex-col items-center justify-center py-4 rounded-lg ${
+                            type.id === 'sunglasses' ? 'bg-[#F2FCE2] text-gray-800' : 'bg-white text-gray-800'
+                          } ${type.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#F2FCE2]'}`}
+                        >
+                          <span className="text-sm">{type.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-4">
+                      <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
+                        <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
+                          <Image size={24} className="text-gray-400" />
+                        </div>
+                        <span className="text-sm font-medium">New sunglasses</span>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2 text-center">
+                        Use good resolution images for best results
+                      </div>
+                    </div>
+                  </>
+                ) : activeCategory === 'shoes' ? (
                   <>
                     <div className="grid grid-cols-3 gap-2 mb-4">
                       {shoeTypes.map((type) => (
@@ -210,8 +250,12 @@ const VirtualTryOn = () => {
             
             <div className="lg:col-span-3 bg-gray-100 rounded-xl p-6">
               <div className="flex flex-col items-start">
-                <h2 className="text-2xl font-medium mb-4">Select a model and {activeCategory === 'shoes' ? 'shoes' : 'clothes'} to get started</h2>
-                <p className="text-gray-600">Use the sidebar on the left to select your model and {activeCategory === 'shoes' ? 'shoes' : 'clothes'} for the AI virtual try-on.</p>
+                <h2 className="text-2xl font-medium mb-4">
+                  Select a model and {activeCategory} to get started
+                </h2>
+                <p className="text-gray-600">
+                  Use the sidebar on the left to select your model and {activeCategory} for the AI virtual try-on.
+                </p>
               </div>
             </div>
           </div>
