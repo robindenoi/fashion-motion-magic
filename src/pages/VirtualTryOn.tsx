@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
-import { Image, Folder, Plus } from 'lucide-react';
-import { Bot, ShirtIcon, BookOpen } from 'lucide-react';
+import { Image, Folder, Plus, Sneakers, BookOpen, Footprints } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -33,9 +32,9 @@ const VirtualTryOn = () => {
   ];
 
   const shoeTypes = [
-    { id: 'sneakers', label: 'Sneakers', icon: ShirtIcon },
+    { id: 'sneakers', label: 'Sneakers', icon: Sneakers },
     { id: 'heels', label: 'Heels', icon: BookOpen },
-    { id: 'boots', label: 'Boots', icon: Bot },
+    { id: 'boots', label: 'Boots', icon: Footprints },
   ];
 
   return (
