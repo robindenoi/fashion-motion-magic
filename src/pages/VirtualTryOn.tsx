@@ -89,7 +89,7 @@ const VirtualTryOn = () => {
               <div className="bg-gray-100 rounded-xl p-4 mb-4 border-l-4 border-primary">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-white text-xs">⚡</span>
+                    <span className="text-white text-xs">���</span>
                   </div>
                   <span className="font-medium">
                     Mode : AI Virtual try on {activeCategory}
@@ -102,9 +102,7 @@ const VirtualTryOn = () => {
                       key={category.id}
                       className={`py-2 px-4 text-center rounded-full text-sm transition-colors ${
                         activeCategory === category.id
-                          ? category.id === 'jewelry' 
-                            ? 'bg-[#F2FCE2] text-gray-800'
-                            : 'bg-primary text-white'
+                          ? 'bg-primary text-white'
                           : 'bg-white text-gray-800'
                       } ${category.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white'}`}
                       onClick={() => !category.disabled && setActiveCategory(category.id)}
@@ -159,8 +157,8 @@ const VirtualTryOn = () => {
                           key={type.id}
                           disabled={type.disabled}
                           className={`flex flex-col items-center justify-center py-4 rounded-lg ${
-                            type.id === 'sunglasses' ? 'bg-[#F2FCE2] text-gray-800' : 'bg-white text-gray-800'
-                          } ${type.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#F2FCE2]'}`}
+                            type.id === 'sunglasses' ? 'bg-primary/10 text-gray-800 border-2 border-primary' : 'bg-white text-gray-800'
+                          } ${type.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary/10 hover:border-2 hover:border-primary'}`}
                         >
                           <span className="text-sm">{type.label}</span>
                         </button>
