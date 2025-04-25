@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
@@ -32,7 +33,17 @@ const VirtualTryOn = () => {
   ];
 
   const shoeTypes = [
-    { id: 'sneakers', label: 'Sneakers', icon: Bot },
+    { 
+      id: 'sneakers', 
+      label: 'Sneakers', 
+      icon: () => (
+        <img 
+          src="/public/lovable-uploads/e9f02024-598d-48a8-87c8-4d7db1cf4a63.png" 
+          alt="Sneakers" 
+          className="w-6 h-6 object-contain" 
+        />
+      ) 
+    },
     { id: 'heels', label: 'Heels', icon: Bot },
     { id: 'boots', label: 'Boots', icon: Bot },
   ];
