@@ -1,14 +1,15 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
-import { Image, Folder, Plus, CirclePlay } from 'lucide-react';
+import { Image, Folder, Plus } from 'lucide-react';
+import { Sneakers, Heels, Boots } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const VirtualTryOn = () => {
   const [activeCategory, setActiveCategory] = useState('clothes');
   const [activeTab, setActiveTab] = useState('try-on');
+  const [selectedShoeType, setSelectedShoeType] = useState('sneakers');
   
   const categories = [
     { id: 'clothes', label: 'Clothes', disabled: false },
@@ -30,7 +31,11 @@ const VirtualTryOn = () => {
     { id: 'one-piece', label: 'One-piece', icon: '👗' },
   ];
 
-  const [selectedGarmentType, setSelectedGarmentType] = useState('top');
+  const shoeTypes = [
+    { id: 'sneakers', label: 'Sneakers', icon: Sneakers },
+    { id: 'heels', label: 'Heels', icon: Heels },
+    { id: 'boots', label: 'Boots', icon: Boots },
+  ];
 
   return (
     <>
@@ -38,7 +43,6 @@ const VirtualTryOn = () => {
       <main className="pt-20 min-h-screen bg-background">
         <div className="container max-w-7xl mx-auto px-4 py-8">
           
-          {/* Tabs navigation */}
           <div className="flex justify-center mb-6">
             <Tabs value={activeTab} className="w-full max-w-md">
               <TabsList className="grid grid-cols-3 w-full">
@@ -57,7 +61,6 @@ const VirtualTryOn = () => {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-gray-100 rounded-xl p-4 mb-4">
                 <div className="flex items-center gap-2 mb-4">
@@ -71,10 +74,11 @@ const VirtualTryOn = () => {
                   <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
                     <span className="text-white text-xs">⚡</span>
                   </div>
-                  <span className="font-medium">Mode : AI Virtual try on clothes</span>
+                  <span className="font-medium">
+                    Mode : AI Virtual try on {activeCategory}
+                  </span>
                 </div>
                 
-                {/* Category buttons */}
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   {categories.map((category) => (
                     <button
@@ -103,14 +107,15 @@ const VirtualTryOn = () => {
                     <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
                       <Plus className="text-white" size={16} />
                     </div>
-                    <span className="font-medium">Add a model and clothes to try on</span>
+                    <span className="font-medium">
+                      Add a model and {activeCategory === 'shoes' ? 'shoes' : 'clothes'} to try on
+                    </span>
                   </div>
                   <button className="text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
                   </button>
                 </div>
                 
-                {/* Model selection */}
                 <div className="bg-white rounded-lg p-4 mb-4">
                   <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
                     <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
@@ -123,62 +128,79 @@ const VirtualTryOn = () => {
                   </div>
                 </div>
                 
-                {/* Clothes source */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm">New clothes from :</span>
-                  <div className="relative inline-block">
-                    <select className="appearance-none bg-white border border-gray-200 rounded-full px-4 py-1 pr-8 text-sm">
-                      <option>Photo</option>
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                {activeCategory === 'shoes' ? (
+                  <>
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      {shoeTypes.map((type) => (
+                        <button
+                          key={type.id}
+                          onClick={() => setSelectedShoeType(type.id)}
+                          className={`flex flex-col items-center justify-center py-4 rounded-lg ${
+                            selectedShoeType === type.id ? 'bg-primary text-white' : 'bg-white text-gray-800'
+                          }`}
+                        >
+                          <type.icon className="mb-1" size={20} />
+                          <span className="text-xs">{type.label}</span>
+                        </button>
+                      ))}
                     </div>
-                  </div>
-                </div>
-                
-                {/* Garment type selection */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  {garmentTypes.map((type) => (
-                    <button
-                      key={type.id}
-                      onClick={() => setSelectedGarmentType(type.id)}
-                      className={`flex flex-col items-center justify-center py-4 rounded-lg ${
-                        selectedGarmentType === type.id ? 'bg-primary text-white' : 'bg-white text-gray-800'
-                      }`}
-                    >
-                      <span className="text-xl">{type.icon}</span>
-                      <span className="text-xs mt-1">{type.label}</span>
-                    </button>
-                  ))}
-                </div>
-                
-                {/* Item selection */}
-                <div className="bg-white rounded-lg p-4 mb-4">
-                  <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
-                    <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
-                      <Image size={24} className="text-gray-400" />
+                    
+                    <div className="bg-white rounded-lg p-4">
+                      <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
+                        <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
+                          <Image size={24} className="text-gray-400" />
+                        </div>
+                        <span className="text-sm font-medium">Select shoes</span>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2 text-center">
+                        Use good resolution images for best results
+                      </div>
                     </div>
-                    <span className="text-sm font-medium">Select {selectedGarmentType}</span>
-                  </div>
-                  <div className="text-xs text-gray-500 mt-2 text-center">
-                    Use good resolution images for best results
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-center">
-                  <Button variant="outline" size="sm" className="flex items-center gap-2 border-black/20">
-                    <CirclePlay size={16} />
-                    <span>Tutorials</span>
-                  </Button>
-                </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      {garmentTypes.map((type) => (
+                        <button
+                          key={type.id}
+                          onClick={() => setSelectedGarmentType(type.id)}
+                          className={`flex flex-col items-center justify-center py-4 rounded-lg ${
+                            selectedGarmentType === type.id ? 'bg-primary text-white' : 'bg-white text-gray-800'
+                          }`}
+                        >
+                          <span className="text-xl">{type.icon}</span>
+                          <span className="text-xs mt-1">{type.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-4 mb-4">
+                      <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
+                        <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center mb-2">
+                          <Image size={24} className="text-gray-400" />
+                        </div>
+                        <span className="text-sm font-medium">Select {selectedGarmentType}</span>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2 text-center">
+                        Use good resolution images for best results
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-center">
+                      <Button variant="outline" size="sm" className="flex items-center gap-2 border-black/20">
+                        <CirclePlay size={16} />
+                        <span>Tutorials</span>
+                      </Button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             
-            {/* Main content */}
             <div className="lg:col-span-3 bg-gray-100 rounded-xl p-6">
               <div className="flex flex-col items-start">
-                <h2 className="text-2xl font-medium mb-4">Select a model and clothes to get started</h2>
-                <p className="text-gray-600">Use the sidebar on the left to select your model and clothes for the AI virtual try-on.</p>
+                <h2 className="text-2xl font-medium mb-4">Select a model and {activeCategory === 'shoes' ? 'shoes' : 'clothes'} to get started</h2>
+                <p className="text-gray-600">Use the sidebar on the left to select your model and {activeCategory === 'shoes' ? 'shoes' : 'clothes'} for the AI virtual try-on.</p>
               </div>
             </div>
           </div>
@@ -190,4 +212,3 @@ const VirtualTryOn = () => {
 };
 
 export default VirtualTryOn;
-
