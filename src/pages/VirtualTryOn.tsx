@@ -61,14 +61,14 @@ const VirtualTryOn = () => {
             <div className="lg:col-span-1">
               <div className="bg-gray-100 rounded-xl p-4 mb-4">
                 <div className="flex items-center gap-2 mb-4">
-                  <Folder className="text-green-500" size={20} />
+                  <Folder className="text-primary" size={20} />
                   <span className="font-medium">Collection : AI Virtual Try On (All)</span>
                 </div>
               </div>
               
-              <div className="bg-gray-100 rounded-xl p-4 mb-4 border-l-4 border-green-500">
+              <div className="bg-gray-100 rounded-xl p-4 mb-4 border-l-4 border-primary">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
                     <span className="text-white text-xs">⚡</span>
                   </div>
                   <span className="font-medium">Mode : AI Virtual try on clothes</span>
@@ -81,9 +81,9 @@ const VirtualTryOn = () => {
                       key={category.id}
                       className={`py-2 px-4 text-center rounded-full text-sm transition-colors ${
                         activeCategory === category.id
-                          ? 'bg-green-500 text-white'
+                          ? 'bg-primary text-white'
                           : 'bg-white text-gray-800'
-                      } ${category.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-500 hover:text-white'}`}
+                      } ${category.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white'}`}
                       onClick={() => !category.disabled && setActiveCategory(category.id)}
                       disabled={category.disabled}
                     >
@@ -93,14 +93,14 @@ const VirtualTryOn = () => {
                 </div>
                 
                 <div className="text-xs text-gray-500 mt-4">
-                  Note : To create an AI model wearing your items, go to the <span className="text-green-500">Models</span> section
+                  Note : To create an AI model wearing your items, go to the <span className="text-primary">Models</span> section
                 </div>
               </div>
               
               <div className="bg-gray-100 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
                       <Plus className="text-white" size={16} />
                     </div>
                     <span className="font-medium">Add a model and clothes to try on</span>
@@ -143,7 +143,7 @@ const VirtualTryOn = () => {
                       key={type.id}
                       onClick={() => setSelectedGarmentType(type.id)}
                       className={`flex flex-col items-center justify-center py-4 rounded-lg ${
-                        selectedGarmentType === type.id ? 'bg-green-500 text-white' : 'bg-white text-gray-800'
+                        selectedGarmentType === type.id ? 'bg-primary text-white' : 'bg-white text-gray-800'
                       }`}
                     >
                       <span className="text-xl">{type.icon}</span>
@@ -175,24 +175,10 @@ const VirtualTryOn = () => {
             </div>
             
             {/* Main content */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 bg-gray-100 rounded-xl p-6">
               <div className="flex flex-col items-start">
-                <h2 className="text-2xl font-light text-green-500 mb-2">Watch this 1 min video</h2>
-                <p className="text-gray-600 mb-6">See how to use AI virtual try-on</p>
-                
-                {/* Video embed */}
-                <div className="w-full bg-gray-100 rounded-lg overflow-hidden aspect-video relative">
-                  <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                    title="Your first AI Virtual Try-On in 1 minute" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                    className="absolute inset-0"
-                  ></iframe>
-                </div>
+                <h2 className="text-2xl font-medium mb-4">Select a model and clothes to get started</h2>
+                <p className="text-gray-600">Use the sidebar on the left to select your model and clothes for the AI virtual try-on.</p>
               </div>
             </div>
           </div>
@@ -204,3 +190,4 @@ const VirtualTryOn = () => {
 };
 
 export default VirtualTryOn;
+
